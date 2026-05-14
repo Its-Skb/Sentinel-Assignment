@@ -67,6 +67,10 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Safety Dashboard</Text>
 
+      <Text style={styles.subtitle}>
+        Your emergency safety companion
+      </Text>
+
       {loading ? (
         <ActivityIndicator size="large" color="#007AFF" />
       ) : (
@@ -123,6 +127,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 30,
     textAlign: "center",
+  },
+
+  subtitle: {
+    textAlign: "center",
+    color: "gray",
+    marginBottom: 30,
   },
 
   card: {
