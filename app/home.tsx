@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../src/firebase/config";
 
@@ -17,6 +18,8 @@ export default function HomeScreen() {
   const [location, setLocation] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [sosMessage, setSosMessage] = useState("");
+
+  const router = useRouter();
 
   useEffect(() => {
     getLocation();
@@ -95,7 +98,10 @@ export default function HomeScreen() {
          </Text>
       ) : null}
 
-      <TouchableOpacity style={styles.reportButton}>
+      <TouchableOpacity 
+        style={styles.reportButton}
+        onPress={() => router.push("/report")}
+      >
         <Text style={styles.buttonText}>
           Report Incident
         </Text>
