@@ -20,6 +20,7 @@ import { db } from "../src/firebase/config";
 export default function ReportScreen() {
   const [incidentType, setIncidentType] = useState("");
   const [description, setDescription] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const [image, setImage] = useState<any>(null);
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -40,7 +41,8 @@ export default function ReportScreen() {
     try {
       if (!incidentType || !description) {
         Alert.alert(
-          "Please fill all required fields"
+          "Validation Error",
+          "Please fill all required fields."
         );
         return;
       }
@@ -55,6 +57,8 @@ export default function ReportScreen() {
 
       const location =
         await Location.getCurrentPositionAsync({});
+
+      setSubmitting(true);
 
       await addDoc(collection(db, "incident_reports"), {
         incidentType,
@@ -77,6 +81,8 @@ export default function ReportScreen() {
         "Error",
         "Failed to submit incident report."
       );
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -129,7 +135,7 @@ export default function ReportScreen() {
         onPress={handleSubmit}
       >
         <Text style={styles.buttonText}>
-          Submit Report
+          {submitting ? "Submitting..." : "Submit Report"}
         </Text>
       </TouchableOpacity>
     </ScrollView>
