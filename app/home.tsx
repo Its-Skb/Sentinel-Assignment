@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRouter } from "expo-router";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../src/firebase/config";
@@ -63,6 +64,13 @@ export default function HomeScreen() {
     }
   };
 
+  const handleLogout = async () => {
+    await AsyncStorage.removeItem("isLoggedIn");
+    await AsyncStorage.removeItem("mobile");
+
+    router.replace("/");
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Safety Dashboard</Text>
@@ -108,6 +116,15 @@ export default function HomeScreen() {
       >
         <Text style={styles.buttonText}>
           Report Incident
+        </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.logoutButton}
+        onPress={handleLogout}
+      >
+        <Text style={styles.buttonText}>
+          Logout
         </Text>
       </TouchableOpacity>
     </View>
@@ -164,6 +181,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#007AFF",
     padding: 18,
     borderRadius: 12,
+  },
+
+  logoutButton: {
+    backgroundColor: "#333",
+    padding: 18,
+    borderRadius: 12,
+    marginTop: 20,
   },
 
   buttonText: {

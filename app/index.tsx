@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage"
 import {
   View,
   Text,
@@ -12,6 +13,19 @@ import { useRouter } from "expo-router";
 export default function LoginScreen() {
   const [mobile, setMobile] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
+
+  const checkLogin = async () => {
+    const isLoggedIn =
+      await AsyncStorage.getItem("isLoggedIn");
+
+    if (isLoggedIn === "true") {
+      router.replace("/home");
+    }
+  };
 
   const handleSendOtp = () => {
     if (mobile.length !== 10) {
