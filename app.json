@@ -19,7 +19,8 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.saurabh_kr.SentinelAssignment"
     },
     "web": {
       "output": "static",
@@ -43,6 +44,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "89b3b1ec-cd63-4067-8f0d-5b31a587ec57"
+      }
     }
   }
 }
