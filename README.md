@@ -1,50 +1,229 @@
-# Welcome to your Expo app 👋
+# Sentinel Safety MVP App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mobile-first Safety MVP application built using Expo React Native and Firebase.
 
-## Get started
+This project enables users to:
 
-1. Install dependencies
+- Login using OTP flow
+- Access real-time GPS location
+- Trigger SOS emergency alerts
+- Report incidents with details and image upload
+- Store emergency and incident data in Firebase Firestore
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+# 🚀 Features
 
-   ```bash
-   npx expo start
-   ```
+## ✅ Authentication
+- Mobile number login
+- OTP verification flow
+- Session persistence using AsyncStorage
 
-In the output, you'll find options to open the app in a
+## ✅ GPS Location Tracking
+- Real-time latitude & longitude
+- Auto location permission handling
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## ✅ SOS Emergency Module
+- One-tap SOS trigger
+- Stores emergency location in Firestore
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## ✅ Incident Reporting
+- Incident type input
+- Incident description
+- Optional image picker
+- Auto GPS capture
+- Firestore incident storage
 
-## Get a fresh project
+## ✅ Firebase Integration
+- Firestore database integration
+- Secure environment variable usage
 
-When you're ready, run:
+## ✅ Android APK Build
+- Built using Expo EAS Build
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+- React Native
+- Expo SDK 54
+- Expo Router
+- TypeScript
+
+## Backend / Database
+- Firebase Firestore
+
+## Libraries Used
+- expo-location
+- expo-image-picker
+- firebase
+- expo-router
+- @react-native-async-storage/async-storage
+
+---
+
+# 📂 Project Structure
 
 ```bash
-npm run reset-project
+app/
+ ├── _layout.tsx
+ ├── index.tsx
+ ├── otp.tsx
+ ├── home.tsx
+ └── report.tsx
+
+src/
+ └── firebase/
+      └── config.ts
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+# ⚙️ Firebase Setup
 
-To learn more about developing your project with Expo, look at the following resources:
+## Step 1 — Create Firebase Project
+- Go to Firebase Console
+- Create a new project
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Step 2 — Enable Firestore
+- Build → Firestore Database
+- Create database in test mode
 
-## Join the community
+## Step 3 — Add Web App
+Copy Firebase config values.
 
-Join our community of developers creating universal apps.
+## Step 4 — Create `.env`
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```env
+EXPO_PUBLIC_FIREBASE_API_KEY=YOUR_KEY
+EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN=YOUR_DOMAIN
+EXPO_PUBLIC_FIREBASE_PROJECT_ID=YOUR_PROJECT_ID
+EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=YOUR_BUCKET
+EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=YOUR_SENDER_ID
+EXPO_PUBLIC_FIREBASE_APP_ID=YOUR_APP_ID
+```
+
+---
+
+# ▶️ Expo Setup
+
+## Install dependencies
+
+```bash
+npm install
+```
+
+## Start development server
+
+```bash
+npx expo start
+```
+
+## Run on Web
+
+```bash
+npx expo start --web
+```
+
+---
+
+# 📱 APK Build
+
+## Install EAS CLI
+
+```bash
+npm install -g eas-cli
+```
+
+## Login to Expo
+
+```bash
+eas login
+```
+
+## Configure build
+
+```bash
+eas build:configure
+```
+
+## Build APK
+
+```bash
+eas build -p android --profile preview --clear-cache
+```
+
+---
+
+# 🔥 Firestore Collections
+
+## sos_alerts
+Stores:
+- latitude
+- longitude
+- timestamp
+
+## incident_reports
+Stores:
+- incidentType
+- description
+- image
+- latitude
+- longitude
+- timestamp
+
+---
+
+# 🧪 Testing Credentials
+
+## OTP Login
+Use any 10-digit mobile number.
+
+### Test OTP
+```bash
+1234
+```
+
+---
+
+# 📸 Screenshots
+
+Add screenshots here:
+
+- Login Screen
+- OTP Screen
+- Dashboard
+- SOS Success
+- Incident Report Screen
+- Firebase Firestore Data
+- APK Running on Device
+
+---
+
+# ✅ Important Notes
+
+- Firebase API keys are stored securely using `.env`
+- `node_modules` is excluded using `.gitignore`
+- Expo Go may not support some native modules properly
+- APK build is recommended for final testing
+
+---
+
+# 👨‍💻 Developer
+
+Saurabh Kumar
+
+---
+
+# 📌 Assignment Completion Status
+
+✅ OTP Login Flow  
+✅ Session Handling  
+✅ GPS Tracking  
+✅ SOS Module  
+✅ Incident Reporting  
+✅ Firebase Firestore Integration  
+✅ Image Picker  
+✅ Android APK Build  
+✅ Expo Deployment Ready  
